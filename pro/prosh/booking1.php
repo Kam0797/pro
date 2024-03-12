@@ -32,6 +32,10 @@
         $stmt->bind_param('ss',$from,$to);
         $stmt->execute();
 
+        $res=$stmt->get_result();
+        $res1=$res->fetch_array();
+        var_dump($res1);
+
         
 
 
