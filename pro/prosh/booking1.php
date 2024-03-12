@@ -19,6 +19,7 @@
             <option value="Economy">Economy</option>
             <option value="Premium">Premium</option>
             <option value="Business">Business</option>
+            <input type="submit" value="Search Flights">
         </select>
     </form>
 
