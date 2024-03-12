@@ -1,0 +1,117 @@
+kam@kam-IdeaPad-3:~$ mysql -u man -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 8.0.36-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> ose samplemn;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ose samplemn' at line 1
+mysql> use samplemn;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_samplemn |
++--------------------+
+| bill               |
+| proc               |
+| supl               |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc supl;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(255) | YES  |     | NULL    |       |
+| age   | int          | YES  |     | NULL    |       |
+| addr  | varchar(255) | YES  |     | NULL    |       |
+| ph    | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.24 sec)
+
+mysql> desc proc;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(255) | YES  |     | NULL    |       |
+| age   | int          | YES  |     | NULL    |       |
+| addr  | varchar(255) | YES  |     | NULL    |       |
+| ph    | varchar(255) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> create table stockin (ph varchar(255),pro varchar(255),pri int,qty int,amt int, date1 date);
+Query OK, 0 rows affected (0.85 sec)
+
+mysql> desc stockin;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| ph    | varchar(255) | YES  |     | NULL    |       |
+| pro   | varchar(255) | YES  |     | NULL    |       |
+| pri   | int          | YES  |     | NULL    |       |
+| qty   | int          | YES  |     | NULL    |       |
+| amt   | int          | YES  |     | NULL    |       |
+| date1 | date         | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> create table stockout (ph varchar(255),pro varchar(255),pri int,qty int,a
+mt int, date1 date);
+Query OK, 0 rows affected (0.61 sec)
+
+mysql> select *  from stockin;
+Empty set (0.03 sec)
+
+mysql> select *  from supl;
+Empty set (0.00 sec)
+
+mysql> select *  from stockin;
++------+-------+------+------+------+------------+
+| ph   | pro   | pri  | qty  | amt  | date1      |
++------+-------+------+------+------+------------+
+| 2    | NULL  |    0 |    0 |    0 | 2024-03-05 |
+| 2    | poda  |   55 |    4 |   59 | 2024-03-05 |
+| 2    | aani  |   12 |   41 |   53 | 2024-03-05 |
+| 2    | suthi |  250 |    4 |  254 | 2024-03-05 |
++------+-------+------+------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> create table stockin_temp (sl int, pro varchar(255),pri int,qty int,amt int);
+Query OK, 0 rows affected (0.69 sec)
+
+mysql> select *  from stockin;
++------+--------+------+------+------+------------+
+| ph   | pro    | pri  | qty  | amt  | date1      |
++------+--------+------+------+------+------------+
+| 2    | NULL   |    0 |    0 |    0 | 2024-03-05 |
+| 2    | poda   |   55 |    4 |   59 | 2024-03-05 |
+| 2    | aani   |   12 |   41 |   53 | 2024-03-05 |
+| 2    | suthi  |  250 |    4 |  254 | 2024-03-05 |
+| 2    | fghjkl |   45 |    5 |   50 | 2024-03-05 |
+| 2    | fghjkl |   45 |    5 |   50 | 2024-03-05 |
+| 2    | ghj    |    5 |    5 |   10 | 2024-03-05 |
+| 2    | lkjhnb |   45 |   58 |  103 | 2024-03-05 |
++------+--------+------+------+------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select *  from stockin_temp;
++------+--------+------+------+------+
+| sl   | pro    | pri  | qty  | amt  |
++------+--------+------+------+------+
+|  100 | fghjkl |   45 |    5 |   50 |
+|  100 | ghj    |    5 |    5 |   10 |
+|  100 | lkjhnb |   45 |   58 |  103 |
++------+--------+------+------+------+
+3 rows in set (0.01 sec)
