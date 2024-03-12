@@ -23,7 +23,7 @@
     </form>
 
     <?php 
-        $from=$_POST['from'];
+        $from=$_POST['from'] ;
         $to=$_POST['to'];
         $date=$_POST['date'];
         $cls=$_POST['cls'];
